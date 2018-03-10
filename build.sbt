@@ -56,7 +56,8 @@ lazy val releaseSample = (project in file("release-sample"))
     publishTo := {
       val prefix = if (isSnapshot.value) "snapshots" else "releases"
       Some(s3resolver.value(s"My ${prefix} S3 bucket", s3(s"${prefix}.tiqwab.com")) withIvyPatterns)
-    }
+    },
+    releaseCrossBuild := true
   )
 
 lazy val resolveSample = (project in file("resolver-sample"))
