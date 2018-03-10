@@ -45,14 +45,12 @@ lazy val root = (project in file("."))
   .settings(
     commonSettings,
     name := "sbt-s3-resolver-plugin-sample",
-    version := "0.2.0",
   ).aggregate(releaseSample, resolveSample, resolveSample11)
 
 lazy val releaseSample = (project in file("release-sample"))
   .settings(
     commonSettings,
     name := "s3-release-sample",
-    version := "0.2.0-SNAPSHOT",
     crossScalaVersions := Seq("2.12.4", "2.11.12"),
     publishMavenStyle := false,
     publishTo := {
@@ -65,7 +63,7 @@ lazy val resolveSample = (project in file("resolver-sample"))
   .settings(
     commonSettings,
     name := "s3-resolver-sample",
-    version := "0.2.0",
+    version := "0.1.0-SNAPSHOT",
     resolvers ++= Seq[Resolver](
       s3resolver.value("Release resolver", s3("releases.tiqwab.com")) withIvyPatterns,
       s3resolver.value("Snapshot resolver", s3("snapshots.tiqwab.com")) withIvyPatterns
@@ -77,7 +75,7 @@ lazy val resolveSample11 = (project in file("resolver-sample11"))
   .settings(
     commonSettings,
     name := "s3-resolver-sample",
-    version := "0.2.0",
+    version := "0.1.0-SNAPSHOT",
     scalaVersion := "2.11.12",
     resolvers ++= Seq[Resolver](
       s3resolver.value("Release resolver", s3("releases.tiqwab.com")) withIvyPatterns,
